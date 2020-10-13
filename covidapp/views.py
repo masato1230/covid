@@ -15,6 +15,17 @@ def helloworldview(request):
   if request.method == 'POST':
     selectedcountry = request.POST['selectedcountry']
     print(selectedcountry)
+    noofresults = int(response['results'])
+    for x in range(0, noofresults): 
+      if selectedcountry == response['response'][x]['country']:
+        new = response['response'][x]['new']
+        active = response['response'][x]['active']
+        critical = response['response'][x]['critical']
+        recovered = response['response'][x]['recovered']
+        total = response['response'][x]['total']
+        deaths = int(total) - int(active) - int(recovered)
+
+        print(response['response'][x]['cases'])
   noofresults = int(response['results'])
   mylist = []
   for x in range(0, noofresults):
