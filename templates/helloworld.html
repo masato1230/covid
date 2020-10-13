@@ -6,17 +6,58 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
-<body>
+<style type="text/css">
+  .container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+</style>
 
-  <form action='' method="POST">
+<body style="background-color: black;">
+
+  <h1 style="margin-top: 50px; color: white; text-align: center;"><span style="color: red;">COVID-19</span> World Wide DATA</h1>
+
+  <form class="d-flex justify-content-center align-items-center" style="margin-top: 50px;" action='' method="POST">
     {% csrf_token %}
-    <select name="selectedcountry" id="">
+    <select class="form-control" name="selectedcountry" style="width: 200px;" id="">
       {% for country in mylist %}
       <option>{{ country }}</option>
       {% endfor %}
     </select>
-    <input type="submit">
+    <input type="submit" class="btn btn-danger ml-1">
   </form>
 
+  <h1 style="margin-top: 150px ; color: white; text-align: center;">{{ selectedcountry }}</h1>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="container" style="height: 100px; width: 200px; background-color: orange;">
+      <h1 style="text-align: center;"> {{ total }} </h1>
+      <p>total cases</p>
+    </div>
+    <div class="container" style="height: 100px; width: 200px; background-color: green;">
+      <h1 style="text-align: center;"> {{ recovered }} </h1>
+      <p>recovered</p>
+    </div>
+    <div class="container" style="height: 100px; width: 200px; background-color: yellow;">
+      <h1 style="text-align: center;"> {{ active }} </h1>
+      <p>active</p>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="container" style="height: 100px; width: 200px; background-color: skyblue;">
+      <h1 style="text-align: center;"> {{ new }} </h1>
+      <p>new</p>
+    </div>
+    <div class="container" style="height: 100px; width: 200px; background-color: darkred;">
+      <h1 style="text-align: center;"> {{ deaths }} </h1>
+      <p>deaths</p>
+    </div>
+    <div class="container" style="height: 100px; width: 200px; background-color: red;">
+      <h1 style="text-align: center;"> {{ critical }} </h1>
+      <p>critical</p>
+    </div>
+  </div>
+  <p style="color: gray; text-align: center; margin-top: 130px;">Developed by Masato</p>
 </body>
 </html>
